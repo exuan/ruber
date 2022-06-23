@@ -1,0 +1,187 @@
+syntax = "proto3";
+package user.service.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/exuan/ruber/api/user/service/v1;v1";
+
+service User {
+  rpc Users (UsersRequest) returns(UsersReply) {
+    option (google.api.http) = {
+      get: "/v1/users"
+    };
+  }
+
+  rpc User (UserRequest) returns(UserReply) {
+    option (google.api.http) = {
+      get: "/v1/user"
+    };
+  }
+
+  rpc SaveUser(SaveUserRequest) returns(SaveUserReply) {
+    option (google.api.http) = {
+      post: "/v1/user/save",
+      body: "*"
+    };
+  }
+
+  rpc DeleteUser(DeleteUserRequest) returns(DeleteUserRequest) {
+    option (google.api.http) = {
+      post: "/v1/user/delete",
+      body: "*"
+    };
+  }
+
+  rpc VerifyPassword(VerifyPasswordRequest) returns(VerifyPasswordReply) {
+    option (google.api.http) = {
+      post: "/v1/user/verifyPassword",
+      body: "*"
+    };
+  }
+
+  rpc SetPassword(SetPasswordRequest) returns(setPasswordReply) {
+    option (google.api.http) = {
+      post: "/v1/user/setPassword",
+      body: "*"
+    };
+  }
+
+}
+
+message UsersRequest {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"username"
+  string username = 2;
+  // @inject_tag: json:"phone"
+  string phone = 3;
+  // @inject_tag: json:"nickname"
+  string nickname = 4;
+  // @inject_tag: json:"owner"
+  string owner = 5;
+  // @inject_tag: json:"page"
+  int64 page = 6;
+  // @inject_tag: json:"size"
+  int64 size = 7;
+  // @inject_tag: json:"app"
+  string app = 8;
+}
+
+message UsersReply {
+  int64 Total = 1;
+  repeated  UserReply items = 2;
+}
+
+message UserRequest {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"username"
+  string username = 2;
+  // @inject_tag: json:"phone"
+  string phone = 3;
+  // @inject_tag: json:"nickname"
+  string nickname = 4;
+  // @inject_tag: json:"owner"
+  string owner = 5;
+  // @inject_tag: json:"owner"
+  string app = 6;
+}
+
+message UserReply {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"username"
+  string username = 2;
+  // @inject_tag: json:"phone"
+  string phone = 3;
+  // @inject_tag: json:"nickname"
+  string nickname = 4;
+  // @inject_tag: json:"avatar"
+  string avatar = 5;
+  // @inject_tag: json:"owner"
+  string owner = 6;
+  // @inject_tag: json:"status"
+  int32 status = 7;
+  // @inject_tag: json:"creator"
+  string creator = 8;
+  // @inject_tag: json:"modifier"
+  string modifier = 9;
+  // @inject_tag: json:"create_time"
+  int64 create_time = 10;
+  // @inject_tag: json:"update_time"
+  int64 update_time = 11;
+  // @inject_tag: json:"app"
+  string app = 12;
+}
+
+message SaveUserRequest {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"username"
+  string username = 2;
+  // @inject_tag: json:"phone"
+  string phone = 3;
+  // @inject_tag: json:"nickname"
+  string nickname = 4;
+  // @inject_tag: json:"avatar"
+  string avatar = 5;
+  // @inject_tag: json:"owner"
+  string owner = 6;
+  // @inject_tag: json:"status"
+  int32 status = 7;
+  // @inject_tag: json:"user_id"
+  string user_id = 8;
+  // @inject_tag: json:"password"
+  string password = 9;
+  // @inject_tag: json:"app"
+  string app = 10;
+}
+
+message SaveUserReply {
+  // @inject_tag: json:"id"
+  string id = 1;
+}
+
+message DeleteUserRequest {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"user_id"
+  string user_id = 2;
+}
+
+message DeleteUserReply {
+  // @inject_tag: json:"id"
+  string id = 1;
+}
+
+message VerifyPasswordRequest {
+  // @inject_tag: json:"username"
+  string username = 1;
+  // @inject_tag: json:"password"
+  string password = 2;
+  // @inject_tag: json:"owner"
+  string owner = 3;
+  // @inject_tag: json:"app"
+  string app = 4;
+}
+
+message VerifyPasswordReply {
+  bool ok = 1;
+  string id = 2;
+}
+
+message SetPasswordRequest {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"password"
+  string password = 2;
+  // @inject_tag: json:"owner"
+  string owner = 3;
+  // @inject_tag: json:"app"
+  string app = 4;
+}
+
+message setPasswordReply {
+  // @inject_tag: json:"id"
+  string id = 1;
+}

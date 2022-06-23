@@ -1,0 +1,49 @@
+syntax = "proto3";
+package user.service.v1;
+
+option go_package = "github.com/exuan/ruber/app/user/service/internal/conf;conf";
+import "google/protobuf/duration.proto";
+
+message Bootstrap {
+  Trace trace = 1;
+  Server server = 2;
+  Data data = 3;
+  Etcd etcd = 4;
+}
+message Trace {
+  string endpoint = 1;
+}
+
+message Server {
+  message HTTP {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  message GRPC {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  HTTP http = 1;
+  GRPC grpc = 2;
+}
+
+message Data {
+  message Database {
+    string driver = 1;
+    string source = 2;
+  }
+  message Redis {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration read_timeout = 3;
+    google.protobuf.Duration write_timeout = 4;
+  }
+  Database database = 1;
+  Redis redis = 2;
+}
+
+message Etcd {
+  string address = 1;
+}

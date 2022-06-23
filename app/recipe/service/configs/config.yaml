@@ -1,0 +1,20 @@
+server:
+  http:
+    addr: 0.0.0.0:15000
+    timeout: 10s
+  grpc:
+    addr: 0.0.0.0:15100
+    timeout: 10s
+data:
+  database:
+    driver: postgres
+    source: host=127.0.0.1 port=5432 user=recipe dbname=recipe password=password sslmode=disable
+
+redis:
+  addr: 127.0.0.1:6379
+  password: password
+  read_timeout: 10
+  write_timeout: 10
+
+etcd:
+  address: 127.0.0.1:2379

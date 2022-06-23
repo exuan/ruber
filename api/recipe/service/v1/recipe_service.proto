@@ -1,0 +1,320 @@
+syntax = "proto3";
+package recipe.service.v1;
+
+import "google/api/annotations.proto";
+
+option  go_package = "github.com/exuan/ruber/api/recipe/service/v1;v1";
+
+service Recipe {
+  rpc Index (IndexRequest) returns (IndexReply) {
+    option(google.api.http) = {
+      get : "/v1/index"
+    };
+  }
+
+  rpc SaveIndex (SaveIndexRequest) returns (SaveIndexReply) {
+    option(google.api.http) = {
+      post : "/v1/index/save",
+      body:"*"
+    };
+  }
+
+  rpc Recipes (RecipesRequest) returns (RecipesReply) {
+    option(google.api.http) = {
+      get : "/v1/recipes"
+    };
+  }
+
+  rpc Recipe (RecipeRequest) returns (RecipeReply) {
+    option(google.api.http) = {
+      get : "/v1/recipe"
+    };
+  }
+
+  rpc SaveRecipe (SaveRecipeRequest) returns (SaveRecipeReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/save",
+      body:"*"
+    };
+  }
+
+  rpc DeleteRecipe (DeleteRecipeRequest) returns (DeleteRecipeReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/delete",
+      body:"*"
+    };
+  }
+
+  rpc Categories(CategoriesRequest) returns (CategoriesReply) {
+    option(google.api.http) = {
+      get : "/v1/categories"
+    };
+  }
+
+  rpc Category(CategoryRequest) returns (CategoryReply) {
+    option(google.api.http) = {
+      get : "/v1/category"
+    };
+  }
+
+  rpc SaveCategory(SaveCategoryRequest) returns (SaveCategoryReply) {
+    option(google.api.http) = {
+      post : "/v1/category/save",
+      body:"*"
+    };
+  }
+
+  rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryReply) {
+    option(google.api.http) = {
+      post : "/v1/category/delete",
+      body:"*"
+    };
+  }
+
+  rpc Favorites (FavoritesRequest) returns (FavoritesReply) {
+    option(google.api.http) = {
+      get : "/v1/favorites"
+    };
+  }
+
+  rpc Favorite (FavoriteRequest) returns (FavoriteReply) {
+    option(google.api.http) = {
+      get : "/v1/favorite"
+    };
+  }
+
+  rpc SaveFavorites (SaveFavoritesRequest) returns (SaveFavoritesReply) {
+    option(google.api.http) = {
+      post : "/v1/favorites/save",
+      body:"*"
+    };
+  }
+}
+
+message IndexRequest{
+}
+
+message IndexReply {
+  repeated  string carousel = 1;
+}
+
+message SaveIndexRequest {
+  repeated  string carousel = 1;
+}
+
+message SaveIndexReply  {
+}
+
+message RecipesRequest {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"title"
+  string title = 2;
+  // @inject_tag: json:"category_id"
+  int64 category_id = 3;
+  // @inject_tag: json:"weight"
+  int64 weight = 4;
+  // @inject_tag: json:"page"
+  int64 page = 5;
+  // @inject_tag: json:"size"
+  int64 size = 6;
+  // @inject_tag: json:"ids"
+  repeated  int64 ids = 7;
+}
+
+message RecipesReply {
+  // @inject_tag: json:"total"
+  int64 total = 1;
+  // @inject_tag: json:"items"
+  repeated RecipeReply items = 2;
+}
+
+message RecipeRequest {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+}
+
+message RecipeReply {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"title"
+  string title = 2;
+  // @inject_tag: json:"category_id"
+  int64 category_id = 3;
+  // @inject_tag: json:"content"
+  string content = 4;
+  // @inject_tag: json:"weight"
+  int64 weight = 5;
+  // @inject_tag: json:"sort"
+  int64 sort = 6;
+  // @inject_tag: json:"status"
+  int32 status = 7;
+  // @inject_tag: json:"creator"
+  string creator = 8;
+  // @inject_tag: json:"modifier"
+  string modifier = 9;
+  // @inject_tag: json:"create_time"
+  int64 create_time = 10;
+  // @inject_tag: json:"update_time"
+  int64 update_time = 11;
+  // @inject_tag: json:"favorites"
+  int64 favorites = 12;
+  // @inject_tag: json:"image"
+  string image = 13;
+}
+
+message SaveRecipeRequest {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"title"
+  string title = 2;
+  // @inject_tag: json:"category_id"
+  int64 category_id = 3;
+  // @inject_tag: json:"content"
+  string content = 4;
+  // @inject_tag: json:"weight"
+  int64 weight = 5;
+  // @inject_tag: json:"sort"
+  int64 sort = 6;
+  // @inject_tag: json:"user_id"
+  string user_id = 7;
+  // @inject_tag: json:"image"
+  string image = 8;
+}
+
+message SaveRecipeReply {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+}
+
+message DeleteRecipeRequest {
+  // @inject_tag: json "id"
+  int64 id = 1;
+  // @inject_tag: json "user_id"
+  string user_id = 2;
+}
+
+message DeleteRecipeReply {
+  // @inject_tag: json "id"
+  int64 id = 1;
+}
+
+message CategoriesRequest {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"name"
+  string name = 2;
+  // @inject_tag: json:"parent_id"
+  string parent_id = 3;
+  // @inject_tag: json:"page"
+  int64 page = 4;
+  // @inject_tag: json:"size"
+  int64 size = 5;
+  // @inject_tag: json:"all"
+  int64 all = 6;
+  // @inject_tag: json:"not_id"
+  string not_id = 7;
+}
+
+message CategoriesReply{
+  int64 total = 1;
+  repeated CategoryReply items = 2;
+}
+
+message SaveCategoryRequest {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"name"
+  string name = 2;
+  // @inject_tag: json:"parent_id"
+  int64 parent_id = 3;
+  // @inject_tag: json:"sort"
+  int64 sort = 4;
+  // @inject_tag: json:"user_id"
+  string user_id = 5;
+}
+
+message SaveCategoryReply {
+  // @inject_tag: json "id"
+  int64 id = 1;
+}
+
+message CategoryRequest {
+  // @inject_tag: json "id"
+  int64 id = 1;
+}
+
+message CategoryReply {
+  // @inject_tag: json:"id"
+  int64 id = 1;
+  // @inject_tag: json:"name"
+  string name = 2;
+  // @inject_tag: json:"parent_id"
+  int64 parent_id = 3;
+  // @inject_tag: json:"sort"
+  int64 sort = 4;
+  // @inject_tag: json:"status"
+  int32 status = 5;
+  // @inject_tag: json:"creator"
+  string creator = 6;
+  // @inject_tag: json:"modifier"
+  string modifier = 7;
+  // @inject_tag: json:"create_time"
+  int64 create_time = 8;
+  // @inject_tag: json:"update_time"
+  int64 update_time = 9;
+}
+
+message DeleteCategoryRequest {
+  // @inject_tag: json "id"
+  int64 id = 1;
+  // @inject_tag: json "user_id"
+  string user_id = 2;
+}
+
+message DeleteCategoryReply {
+  // @inject_tag: json "id"
+  int64 id = 1;
+}
+
+message FavoritesRequest {
+  // @inject_tag: json:"user_id"
+  string user_id = 1;
+  // @inject_tag: json:"page"
+  int64 page = 2;
+  // @inject_tag: json:"size"
+  int64 size = 3;
+  // @inject_tag: json:"all"
+  int64 all = 4;
+}
+
+message FavoriteRequest {
+  // @inject_tag: json:"user_id"
+  string user_id = 1;
+  // @inject_tag: json:"recipe_id"
+  int64 recipe_id = 2;
+}
+
+message FavoritesReply {
+  // @inject_tag: json:"items"
+  repeated  FavoriteReply items = 1;
+}
+
+message FavoriteReply {
+  int64 id = 1;
+  int64 recipe_id = 2;
+  string user_id = 3;
+}
+
+message SaveFavoritesRequest {
+  // @inject_tag: json:"recipe_id"
+  int64 recipe_id = 1;
+  // @inject_tag: json:"user_id"
+  string user_id = 2;
+  // @inject_tag: json:"action"
+  int32 action = 3;
+}
+
+message SaveFavoritesReply {
+
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package recipe.service.v1;
+option go_package = "github.com/exuan/ruber/app/recipe/backend/internal/conf;conf";
+import "google/protobuf/duration.proto";
+
+message Bootstrap {
+  Server server = 1;
+  Etcd etcd = 2;
+  Attachment attachment = 3;
+}
+
+message Server {
+  message HTTP {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  message GRPC {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  HTTP http = 1;
+  GRPC grpc = 2;
+}
+
+message Etcd {
+  string address = 1;
+}
+
+message Attachment {
+  string secret_id = 1;
+  string secret_key = 2;
+  string bucket_url = 3;
+  string name = 4;
+  string type = 5;
+}

@@ -1,0 +1,25 @@
+server:
+  http:
+    addr: 0.0.0.0:15002
+    timeout: 10s
+  grpc:
+    addr: 0.0.0.0:15102
+    timeout: 10s
+etcd:
+  address: 127.0.0.1:2379
+  scheme: http
+
+attachment:
+  name: default
+  type: cos
+  secret_id: tencent cloud cos secret id
+  secret_key:  tencent cloud cos secret key
+  bucket_url: tencent cloud cos bucket url
+  domain: attachment domain
+
+redis:
+  addr: 127.0.0.1:6379
+  password: password
+  db: 0
+  read_timeout: 10
+  write_timeout: 10

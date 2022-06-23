@@ -1,0 +1,529 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "v1/user.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "User"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/user": {
+      "get": {
+        "operationId": "User_User",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json:\"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "description": "@inject_tag: json:\"username\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "description": "@inject_tag: json:\"phone\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "nickname",
+            "description": "@inject_tag: json:\"nickname\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "@inject_tag: json:\"owner\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "app",
+            "description": "@inject_tag: json:\"owner\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/user/delete": {
+      "post": {
+        "operationId": "User_DeleteUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteUserRequest"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeleteUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/user/save": {
+      "post": {
+        "operationId": "User_SaveUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveUserReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SaveUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/user/setPassword": {
+      "post": {
+        "operationId": "User_SetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1setPasswordReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/user/verifyPassword": {
+      "post": {
+        "operationId": "User_VerifyPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1VerifyPasswordReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1VerifyPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/users": {
+      "get": {
+        "operationId": "User_Users",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UsersReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json:\"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "description": "@inject_tag: json:\"username\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "description": "@inject_tag: json:\"phone\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "nickname",
+            "description": "@inject_tag: json:\"nickname\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "@inject_tag: json:\"owner\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "@inject_tag: json:\"page\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": "@inject_tag: json:\"size\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "app",
+            "description": "@inject_tag: json:\"app\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1DeleteUserRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json:\"user_id\""
+        }
+      }
+    },
+    "v1SaveUserReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        }
+      }
+    },
+    "v1SaveUserRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "username": {
+          "type": "string",
+          "title": "@inject_tag: json:\"username\""
+        },
+        "phone": {
+          "type": "string",
+          "title": "@inject_tag: json:\"phone\""
+        },
+        "nickname": {
+          "type": "string",
+          "title": "@inject_tag: json:\"nickname\""
+        },
+        "avatar": {
+          "type": "string",
+          "title": "@inject_tag: json:\"avatar\""
+        },
+        "owner": {
+          "type": "string",
+          "title": "@inject_tag: json:\"owner\""
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@inject_tag: json:\"status\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json:\"user_id\""
+        },
+        "password": {
+          "type": "string",
+          "title": "@inject_tag: json:\"password\""
+        },
+        "app": {
+          "type": "string",
+          "title": "@inject_tag: json:\"app\""
+        }
+      }
+    },
+    "v1SetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "password": {
+          "type": "string",
+          "title": "@inject_tag: json:\"password\""
+        },
+        "owner": {
+          "type": "string",
+          "title": "@inject_tag: json:\"owner\""
+        },
+        "app": {
+          "type": "string",
+          "title": "@inject_tag: json:\"app\""
+        }
+      }
+    },
+    "v1UserReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "username": {
+          "type": "string",
+          "title": "@inject_tag: json:\"username\""
+        },
+        "phone": {
+          "type": "string",
+          "title": "@inject_tag: json:\"phone\""
+        },
+        "nickname": {
+          "type": "string",
+          "title": "@inject_tag: json:\"nickname\""
+        },
+        "avatar": {
+          "type": "string",
+          "title": "@inject_tag: json:\"avatar\""
+        },
+        "owner": {
+          "type": "string",
+          "title": "@inject_tag: json:\"owner\""
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@inject_tag: json:\"status\""
+        },
+        "creator": {
+          "type": "string",
+          "title": "@inject_tag: json:\"creator\""
+        },
+        "modifier": {
+          "type": "string",
+          "title": "@inject_tag: json:\"modifier\""
+        },
+        "createTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"create_time\""
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"update_time\""
+        },
+        "app": {
+          "type": "string",
+          "title": "@inject_tag: json:\"app\""
+        }
+      }
+    },
+    "v1UsersReply": {
+      "type": "object",
+      "properties": {
+        "Total": {
+          "type": "string",
+          "format": "int64"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1UserReply"
+          }
+        }
+      }
+    },
+    "v1VerifyPasswordReply": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "v1VerifyPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "title": "@inject_tag: json:\"username\""
+        },
+        "password": {
+          "type": "string",
+          "title": "@inject_tag: json:\"password\""
+        },
+        "owner": {
+          "type": "string",
+          "title": "@inject_tag: json:\"owner\""
+        },
+        "app": {
+          "type": "string",
+          "title": "@inject_tag: json:\"app\""
+        }
+      }
+    },
+    "v1setPasswordReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "@inject_tag: json:\"id\""
+        }
+      }
+    }
+  }
+}

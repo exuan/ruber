@@ -1,0 +1,940 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "v1/recipe_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Recipe"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/categories": {
+      "get": {
+        "operationId": "Recipe_Categories",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CategoriesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json:\"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": "@inject_tag: json:\"name\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parentId",
+            "description": "@inject_tag: json:\"parent_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "@inject_tag: json:\"page\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": "@inject_tag: json:\"size\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "all",
+            "description": "@inject_tag: json:\"all\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "notId",
+            "description": "@inject_tag: json:\"not_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/category": {
+      "get": {
+        "operationId": "Recipe_Category",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CategoryReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json \"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/category/delete": {
+      "post": {
+        "operationId": "Recipe_DeleteCategory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteCategoryReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeleteCategoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/category/save": {
+      "post": {
+        "operationId": "Recipe_SaveCategory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveCategoryReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SaveCategoryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/favorite": {
+      "get": {
+        "operationId": "Recipe_Favorite",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1FavoriteReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "@inject_tag: json:\"user_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "recipeId",
+            "description": "@inject_tag: json:\"recipe_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/favorites": {
+      "get": {
+        "operationId": "Recipe_Favorites",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1FavoritesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "@inject_tag: json:\"user_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "@inject_tag: json:\"page\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": "@inject_tag: json:\"size\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "all",
+            "description": "@inject_tag: json:\"all\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/favorites/save": {
+      "post": {
+        "operationId": "Recipe_SaveFavorites",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveFavoritesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SaveFavoritesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/index": {
+      "get": {
+        "operationId": "Recipe_Index",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1IndexReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/index/save": {
+      "post": {
+        "operationId": "Recipe_SaveIndex",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveIndexReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SaveIndexRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/recipe": {
+      "get": {
+        "operationId": "Recipe_Recipe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1RecipeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json:\"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/recipe/delete": {
+      "post": {
+        "operationId": "Recipe_DeleteRecipe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteRecipeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeleteRecipeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/recipe/save": {
+      "post": {
+        "operationId": "Recipe_SaveRecipe",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveRecipeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SaveRecipeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    },
+    "/v1/recipes": {
+      "get": {
+        "operationId": "Recipe_Recipes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1RecipesReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "@inject_tag: json:\"id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "title",
+            "description": "@inject_tag: json:\"title\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "categoryId",
+            "description": "@inject_tag: json:\"category_id\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "weight",
+            "description": "@inject_tag: json:\"weight\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "page",
+            "description": "@inject_tag: json:\"page\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": "@inject_tag: json:\"size\".",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ids",
+            "description": "@inject_tag: json:\"ids\".",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "Recipe"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1CategoriesReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1CategoryReply"
+          }
+        }
+      }
+    },
+    "v1CategoryReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@inject_tag: json:\"name\""
+        },
+        "parentId": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"parent_id\""
+        },
+        "sort": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"sort\""
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@inject_tag: json:\"status\""
+        },
+        "creator": {
+          "type": "string",
+          "title": "@inject_tag: json:\"creator\""
+        },
+        "modifier": {
+          "type": "string",
+          "title": "@inject_tag: json:\"modifier\""
+        },
+        "createTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"create_time\""
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"update_time\""
+        }
+      }
+    },
+    "v1DeleteCategoryReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json \"id\""
+        }
+      }
+    },
+    "v1DeleteCategoryRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json \"id\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json \"user_id\""
+        }
+      }
+    },
+    "v1DeleteRecipeReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json \"id\""
+        }
+      }
+    },
+    "v1DeleteRecipeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json \"id\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json \"user_id\""
+        }
+      }
+    },
+    "v1FavoriteReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "recipeId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FavoritesReply": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FavoriteReply"
+          },
+          "title": "@inject_tag: json:\"items\""
+        }
+      }
+    },
+    "v1IndexReply": {
+      "type": "object",
+      "properties": {
+        "carousel": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1RecipeReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "title": {
+          "type": "string",
+          "title": "@inject_tag: json:\"title\""
+        },
+        "categoryId": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"category_id\""
+        },
+        "content": {
+          "type": "string",
+          "title": "@inject_tag: json:\"content\""
+        },
+        "weight": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"weight\""
+        },
+        "sort": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"sort\""
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@inject_tag: json:\"status\""
+        },
+        "creator": {
+          "type": "string",
+          "title": "@inject_tag: json:\"creator\""
+        },
+        "modifier": {
+          "type": "string",
+          "title": "@inject_tag: json:\"modifier\""
+        },
+        "createTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"create_time\""
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"update_time\""
+        },
+        "favorites": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"favorites\""
+        },
+        "image": {
+          "type": "string",
+          "title": "@inject_tag: json:\"image\""
+        }
+      }
+    },
+    "v1RecipesReply": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"total\""
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1RecipeReply"
+          },
+          "title": "@inject_tag: json:\"items\""
+        }
+      }
+    },
+    "v1SaveCategoryReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json \"id\""
+        }
+      }
+    },
+    "v1SaveCategoryRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@inject_tag: json:\"name\""
+        },
+        "parentId": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"parent_id\""
+        },
+        "sort": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"sort\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json:\"user_id\""
+        }
+      }
+    },
+    "v1SaveFavoritesReply": {
+      "type": "object"
+    },
+    "v1SaveFavoritesRequest": {
+      "type": "object",
+      "properties": {
+        "recipeId": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"recipe_id\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json:\"user_id\""
+        },
+        "action": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@inject_tag: json:\"action\""
+        }
+      }
+    },
+    "v1SaveIndexReply": {
+      "type": "object"
+    },
+    "v1SaveIndexRequest": {
+      "type": "object",
+      "properties": {
+        "carousel": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1SaveRecipeReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"id\""
+        }
+      }
+    },
+    "v1SaveRecipeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"id\""
+        },
+        "title": {
+          "type": "string",
+          "title": "@inject_tag: json:\"title\""
+        },
+        "categoryId": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"category_id\""
+        },
+        "content": {
+          "type": "string",
+          "title": "@inject_tag: json:\"content\""
+        },
+        "weight": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"weight\""
+        },
+        "sort": {
+          "type": "string",
+          "format": "int64",
+          "title": "@inject_tag: json:\"sort\""
+        },
+        "userId": {
+          "type": "string",
+          "title": "@inject_tag: json:\"user_id\""
+        },
+        "image": {
+          "type": "string",
+          "title": "@inject_tag: json:\"image\""
+        }
+      }
+    }
+  }
+}

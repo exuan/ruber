@@ -1,0 +1,151 @@
+syntax = "proto3";
+package recipe.backend.v1;
+
+import "google/api/annotations.proto";
+import "recipe/service/v1/recipe_service.proto";
+
+option go_package = "github.com/exuan/ruber/api/recipe/backend/v1;v1";
+
+service Backend {
+  rpc Login(LoginRequest) returns (LoginReply) {
+    option (google.api.http) = {
+      post: "/v1/login",
+      body:"*"
+    };
+  }
+
+  rpc Logout(LogoutRequest) returns (LogoutReply) {
+    option (google.api.http) = {
+      post: "/v1/logout",
+      body:"*"
+    };
+  }
+
+  rpc User(UserRequest) returns (UserReply) {
+    option (google.api.http) = {
+      get: "/v1/user",
+    };
+  }
+
+  rpc RecipeIndex (recipe.service.v1.IndexRequest) returns (recipe.service.v1.IndexReply) {
+    option(google.api.http) = {
+      get : "/v1/recipe/index"
+    };
+  }
+
+  rpc SaveRecipeIndex (recipe.service.v1.SaveIndexRequest) returns (recipe.service.v1.SaveIndexReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/index/save",
+      body:"*"
+    };
+  }
+
+  rpc Recipes (recipe.service.v1.RecipesRequest) returns (recipe.service.v1.RecipesReply) {
+    option(google.api.http) = {
+      get : "/v1/recipes"
+    };
+  }
+
+  rpc Recipe (recipe.service.v1.RecipeRequest) returns (recipe.service.v1.RecipeReply) {
+    option(google.api.http) = {
+      get : "/v1/recipe"
+    };
+  }
+
+  rpc SaveRecipe (recipe.service.v1.SaveRecipeRequest) returns (recipe.service.v1.SaveRecipeReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/save",
+      body:"*"
+    };
+  }
+
+  rpc DeleteRecipe (recipe.service.v1.DeleteRecipeRequest) returns (recipe.service.v1.DeleteRecipeReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/delete",
+      body:"*"
+    };
+  }
+
+  rpc RecipeCategories(recipe.service.v1.CategoriesRequest) returns (recipe.service.v1.CategoriesReply) {
+    option(google.api.http) = {
+      get : "/v1/recipe/categories"
+    };
+  }
+
+  rpc RecipeCategory(recipe.service.v1.CategoryRequest) returns (recipe.service.v1.CategoryReply) {
+    option(google.api.http) = {
+      get : "/v1/recipe/category"
+    };
+  }
+
+  rpc SaveRecipeCategory(recipe.service.v1.SaveCategoryRequest) returns (recipe.service.v1.SaveCategoryReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/category/save",
+      body:"*"
+    };
+  }
+
+  rpc DeleteRecipeCategory(recipe.service.v1.DeleteCategoryRequest) returns (recipe.service.v1.DeleteCategoryReply) {
+    option(google.api.http) = {
+      post : "/v1/recipe/category/delete",
+      body:"*"
+    };
+  }
+
+  rpc UploadUrl (UploadUrlRequest) returns (UploadUrlReply) {
+    option (google.api.http) = {
+      post: "/v1/uploadUrl",
+      body: "*"
+    };
+  }
+
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginReply {
+  string token = 1;
+}
+
+message LogoutRequest{
+}
+
+message LogoutReply{
+
+}
+
+message UserRequest {
+
+}
+
+message UserReply {
+  // @inject_tag: json:"id"
+  string id = 1;
+  // @inject_tag: json:"username"
+  string username = 2;
+  // @inject_tag: json:"phone"
+  string phone = 3;
+  // @inject_tag: json:"nickname"
+  string nickname = 4;
+  // @inject_tag: json:"avatar"
+  string avatar = 5;
+  // @inject_tag: json:"create_time"
+  int64 create_time = 6;
+  // @inject_tag: json:"update_time"
+  int64 update_time = 7;
+}
+
+message UploadUrlRequest{
+  // @inject_tag: json:"ext" form:"ext"
+  string ext = 1;
+}
+
+message UploadUrlReply {
+  // @inject_tag: json:"url" form:"url"
+  string url = 1;
+  // @inject_tag: json:"presigned_url" form:"presigned_url"
+  string presignedUrl = 2;
+}
